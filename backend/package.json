@@ -1,16 +1,27 @@
 {
-  "name": "backend",
+  "name": "signsync-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "SignSync Lite Node.js backend",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "node prisma/seed.js",
+    "test": "jest --runInBand"
   },
-  "keywords": [],
+  "keywords": [
+    "signsync",
+    "backend",
+    "express",
+    "prisma"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.10.0",
     "axios": "^1.20.0",
     "bcrypt": "^6.0.0",
@@ -19,16 +30,11 @@
     "cors": "^2.8.6",
     "dotenv": "^18.0.1",
     "express": "^5.2.1",
-    "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^8.7.0",
-    "form-data": "^4.0.6",
     "helmet": "^8.3.0",
-    "hpp": "^0.2.3",
-    "json2csv": "^6.0.0-alpha.2",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.12.1",
-    "nodemailer": "^10.0.10",
-    "openai": "^7.20.0",
+    "pg": "^8.23.1",
     "socket.io": "^4.8.3",
     "swagger-jsdoc": "^6.3.0",
     "swagger-ui-express": "^5.0.1",
@@ -37,8 +43,15 @@
   },
   "devDependencies": {
     "jest": "^30.5.2",
-    "nodemon": "^3.1.14",
-    "prisma": "^8.0.0-rc.15",
+    "prisma": "^7.10.0",
     "supertest": "^7.2.2"
+  },
+  "overrides": {
+    "@prisma/config": {
+      "deepmerge-ts": "^8.0.2"
+    },
+    "prisma": {
+      "mysql2": "^3.24.5"
+    }
   }
 }

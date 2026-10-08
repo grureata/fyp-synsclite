@@ -5,31 +5,31 @@ export default function PrivacyPage() {
   const sections = [
     {
       title: "Information We Collect",
-      body: `SignSync is built with privacy as a core principle, not an afterthought. When you use our translator, your camera captures video locally on your device. We process this into skeletal landmark coordinates — 543 numbered points tracking your hands, face, and posture. Raw video frames are never transmitted to our servers. The only data that leaves your device is anonymized landmark coordinates used for real-time inference.`,
+      body: `When you create an account, SignSync stores your username, email address, and a password hash. Contact form submissions are stored by the backend. Calibration profiles, session metadata, and accepted static-letter recognition records are associated with your account. When you explicitly request recognition, one still camera frame is sent to the backend and inference service for processing. The application code does not store the camera frame.`,
     },
     {
       title: "How AI Processing Works",
-      body: `Landmark data is sent over an encrypted WebSocket connection to our inference API, processed to produce a translation, and the result is returned to your browser. We do not store landmark sequences or translation outputs. Each session is ephemeral — when you close the tab, all data is discarded. We do not build user profiles from your signing patterns.`,
+      body: `The prototype recognizes a limited set of isolated static ASL fingerspelling handshapes and returns English letter labels. The captured frame is processed by the configured inference service; confidence below a validation-selected threshold is shown as uncertain. J and Z, which require movement, and all continuous signing, words, phrases, facial grammar, and sentence translation are unsupported. This is not an interpreter and must not be relied upon for consequential communication.`,
     },
     {
       title: "Session History",
-      body: `If you enable session history, translations are stored locally in your browser's storage. This data never leaves your device unless you explicitly export it. You can clear your local session history at any time from the Dashboard. SignSync servers hold no copy of your conversation history.`,
+      body: `When signed in, session metadata, calibration values, and translation records created through the API are stored in the configured PostgreSQL database. The dashboard can export the records it displays. Contact the project maintainers to request account-data changes or deletion; the application does not currently provide account deletion.`,
     },
     {
       title: "Cookies & Analytics",
-      body: `We use a single first-party analytics cookie to understand aggregate usage patterns — pages visited, session duration, and feature engagement. We do not use third-party advertising cookies. We do not sell, share, or monetize user data in any form. You can opt out of analytics in Settings → Privacy.`,
+      body: `Signing in sets an HttpOnly authentication cookie. The current application does not implement analytics or advertising cookies. The backend also writes HTTP request metadata to its configured application logs; operators should protect and retain those logs according to their deployment policy.`,
     },
     {
       title: "Your Rights",
-      body: `You have the right to access, correct, or delete any data we hold about you. Since we retain minimal data by design, most requests resolve immediately. For questions or deletion requests, contact privacy@signsync.app. We respond to all privacy requests within 7 business days.`,
+      body: `For questions about account or contact-form data, use the Contact page to reach the project maintainers. The current application has no self-service account deletion or data-retention controls, so deployment operators must handle requests directly.`,
     },
     {
       title: "Children's Privacy",
-      body: `SignSync does not knowingly collect information from children under 13. If you believe a child has used our service, contact us and we will take immediate steps to remove any associated data. Our service is intended for users 13 and older.`,
+      body: `The prototype does not verify a user's age. Operators should establish and communicate appropriate age requirements before deployment.`,
     },
     {
       title: "Changes to This Policy",
-      body: `When we update this policy, we will post the revised version here with an updated effective date and notify registered users by email. Continued use of SignSync after changes means you accept the updated terms.`,
+      body: `When this policy changes, the revised version may be posted here with an updated date. The current application does not send email notifications about policy changes.`,
     },
   ];
 
@@ -46,9 +46,9 @@ export default function PrivacyPage() {
             Privacy <span className="grad-text">Policy</span>
           </h1>
           <p className="body" style={{ maxWidth:520, lineHeight:1.8 }}>
-            SignSync is designed to protect your privacy at every layer. This policy explains what we collect, how we use it, and the choices you have — in plain language.
+            This policy describes the data flows currently implemented in the SignSync Lite prototype.
           </p>
-          <p style={{ marginTop:16, fontSize:12, color:"var(--t4)", fontFamily:"'JetBrains Mono',monospace" }}>Effective: January 1, 2026 · Last updated: May 31, 2026</p>
+          <p style={{ marginTop:16, fontSize:12, color:"var(--t4)", fontFamily:"'JetBrains Mono',monospace" }}>Reviewed: October 8, 2026</p>
         </div>
       </section>
 
@@ -73,9 +73,7 @@ export default function PrivacyPage() {
 
           <div style={{ marginTop:56, padding:"24px", background:"var(--bg-2)", border:"1px solid var(--b2)", borderRadius:"var(--r3)" }}>
             <p style={{ fontSize:14, color:"var(--t2)", lineHeight:1.75 }}>
-              Questions about this policy? Reach us at{" "}
-              <Link href="/contact" style={{ color:"var(--teal)", textDecoration:"underline", textUnderlineOffset:3 }}>privacy@signsync.app</Link>
-              {" "}or visit our{" "}
+              Questions about this policy? Use the{" "}
               <Link href="/contact" style={{ color:"var(--teal)", textDecoration:"underline", textUnderlineOffset:3 }}>Contact page</Link>.
             </p>
           </div>
@@ -91,7 +89,7 @@ export default function PrivacyPage() {
             </div>
             <span style={{ fontWeight:800, fontSize:15, color:"var(--t1)" }}>Sign<span style={{ color:"var(--teal)" }}>Sync</span></span>
           </Link>
-          <p style={{ fontSize:12, color:"var(--t4)" }}>© 2026 SignSync. Making communication accessible for everyone.</p>
+          <p style={{ fontSize:12, color:"var(--t4)" }}>© 2026 SignSync Lite prototype.</p>
           <div style={{ display:"flex", gap:22 }}>
             <Link href="/privacy" className="footer-link" style={{ color:"var(--teal)" }}>Privacy</Link>
             <Link href="/terms" className="footer-link">Terms</Link>

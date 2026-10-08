@@ -9,7 +9,7 @@ export default function TermsPage() {
     },
     {
       title: "Permitted Use",
-      body: "SignSync is provided for personal, non-commercial communication and accessibility purposes. You may use it to translate sign language in real time, share translations, and export your session history. You may not reverse-engineer, scrape, or create derivative works of the SignSync platform without written permission.",
+      body: "SignSync Lite is a software prototype. Its recognition feature classifies one explicitly captured, held static ASL fingerspelling handshape at a time. It does not recognize words, phrases, or continuous signing and is not an interpreter. Do not rely on it for medical, legal, emergency, or other consequential communication.",
     },
     {
       title: "Prohibited Conduct",
@@ -17,19 +17,19 @@ export default function TermsPage() {
     },
     {
       title: "Intellectual Property",
-      body: "SignSync, its models, algorithms, UI, and branding are the intellectual property of SignSync Inc. The MediaPipe and AI model integrations are used under their respective open-source licenses. Your translations belong to you — we make no claim over the content you produce.",
+      body: "The repository includes recognition-service code and training tooling; trained weights, source images, and the separate MediaPipe model asset are not included. Review the dataset and dependency licenses before distributing derived artifacts.",
     },
     {
       title: "Service Availability",
-      body: "We aim for 99.9% uptime but do not guarantee uninterrupted access. We may modify, suspend, or discontinue features at any time. We will provide reasonable notice of material changes. SignSync is provided 'as is' without warranties of any kind.",
+      body: "This prototype is provided for evaluation and has no uptime or availability guarantee. Features may be unavailable, incomplete, or changed. It is not a substitute for a qualified interpreter.",
     },
     {
       title: "Limitation of Liability",
-      body: "To the maximum extent permitted by law, SignSync Inc. is not liable for indirect, incidental, or consequential damages arising from your use of the service. Our total liability to you shall not exceed the amount you paid us in the past 12 months, which for free-tier users is zero.",
+      body: "The prototype has not been validated for accuracy, accessibility certification, or production use. Do not rely on it as the sole means of communication in a high-stakes setting.",
     },
     {
       title: "Governing Law",
-      body: "These terms are governed by the laws of the State of Delaware, USA, without regard to conflict of law provisions. Any dispute shall be resolved by binding arbitration, except where prohibited by law.",
+      body: "This project does not specify a governing jurisdiction or provide legal advice. Consult the project maintainers for deployment-specific terms before using it beyond evaluation.",
     },
   ];
 
@@ -46,9 +46,9 @@ export default function TermsPage() {
             Terms of <span className="grad-text">Service</span>
           </h1>
           <p className="body" style={{ maxWidth:520, lineHeight:1.8 }}>
-            These terms govern your access to and use of SignSync. We've written them to be clear and fair — please read them before using the platform.
+            These terms describe use of this prototype. Its static-letter recognition has not been validated for consequential communication.
           </p>
-          <p style={{ marginTop:16, fontSize:12, color:"var(--t4)", fontFamily:"'JetBrains Mono',monospace" }}>Effective: January 1, 2026 · Last updated: May 31, 2026</p>
+          <p style={{ marginTop:16, fontSize:12, color:"var(--t4)", fontFamily:"'JetBrains Mono',monospace" }}>Effective: January 1, 2026 · Last updated: October 8, 2026</p>
         </div>
       </section>
 
@@ -72,9 +72,9 @@ export default function TermsPage() {
           <div style={{ marginTop:56, padding:"24px", background:"var(--bg-2)", border:"1px solid var(--b2)", borderRadius:"var(--r3)" }}>
             <p style={{ fontSize:14, color:"var(--t2)", lineHeight:1.75 }}>
               Questions about these terms? Contact us at{" "}
-              <Link href="/contact" style={{ color:"var(--teal)", textDecoration:"underline", textUnderlineOffset:3 }}>legal@signsync.app</Link>
+              <Link href="/contact" style={{ color:"var(--teal)", textDecoration:"underline", textUnderlineOffset:3 }}>Contact page</Link>
               {" "}or visit our{" "}
-              <Link href="/contact" style={{ color:"var(--teal)", textDecoration:"underline", textUnderlineOffset:3 }}>Contact page</Link>.
+              <Link href="/about" style={{ color:"var(--teal)", textDecoration:"underline", textUnderlineOffset:3 }}>About page</Link>.
             </p>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function TermsPage() {
             </div>
             <span style={{ fontWeight:800, fontSize:15, color:"var(--t1)" }}>Sign<span style={{ color:"var(--teal)" }}>Sync</span></span>
           </Link>
-          <p style={{ fontSize:12, color:"var(--t4)" }}>© 2026 SignSync. Making communication accessible for everyone.</p>
+          <p style={{ fontSize:12, color:"var(--t4)" }}>© 2026 SignSync Lite prototype.</p>
           <div style={{ display:"flex", gap:22 }}>
             <Link href="/privacy" className="footer-link">Privacy</Link>
             <Link href="/terms" className="footer-link" style={{ color:"var(--teal)" }}>Terms</Link>

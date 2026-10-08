@@ -2,17 +2,38 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { apiRequest, User } from "../../lib/api";
 
 export default function Navbar() {
   const path = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [authError, setAuthError] = useState("");
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    apiRequest<User>("/auth/me")
+      .then((currentUser) => { if (active) setUser(currentUser); })
+      .catch(() => { if (active) setUser(null); });
+    return () => { active = false; };
+  }, []);
+
+  async function signOut() {
+    try {
+      await apiRequest<null>("/auth/logout", { method: "POST" });
+      setUser(null);
+      setAuthError("");
+    } catch (cause) {
+      setAuthError(cause instanceof Error ? cause.message : "Unable to sign out.");
+    }
+  }
 
   const links = [
     { href: "/",          label: "Home" },
@@ -32,7 +53,6 @@ export default function Navbar() {
       }}>
         <div className="wrap" style={{ height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
-          {/* Logo */}
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
             <div style={{
               width: 34, height: 34, borderRadius: 10,
@@ -49,7 +69,6 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop nav */}
           <div className="nav-links-desktop">
             {links.map(({ href, label }) => (
               <Link key={href} href={href} style={{
@@ -66,17 +85,19 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
           <div className="nav-cta-desktop">
-            <Link href="/translate" className="btn btn-v" style={{ fontSize: 13, padding: "9px 18px" }}>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/>
-              </svg>
-              Open Translator
-            </Link>
+            {user ? (
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 12, color: "var(--t3)" }}>{user.username}</span>
+                <button type="button" onClick={() => { void signOut(); }} className="btn btn-outline" style={{ fontSize: 13, padding: "9px 18px" }}>
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <Link href="/login" className="btn btn-v" style={{ fontSize: 13, padding: "9px 18px" }}>Sign in</Link>
+            )}
           </div>
 
-          {/* Hamburger */}
           <button className="hamburger" onClick={() => setMenuOpen(o => !o)}
             style={{ background: "none", border: "none", padding: 8, cursor: "pointer", color: "var(--t1)" }}
             aria-label="Menu">
@@ -88,7 +109,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
         {links.map(({ href, label }) => (
           <Link key={href} href={href} onClick={() => setMenuOpen(false)} style={{
@@ -104,7 +124,11 @@ export default function Navbar() {
           style={{ marginTop: 8, width: "100%", justifyContent: "center" }}>
           Open Translator
         </Link>
+        {user
+          ? <button type="button" onClick={() => { setMenuOpen(false); void signOut(); }} className="btn btn-outline">Sign out</button>
+          : <Link href="/login" onClick={() => setMenuOpen(false)} className="btn btn-outline">Sign in</Link>}
       </div>
+      {authError && <p role="alert" style={{ position: "fixed", right: 16, bottom: 16, zIndex: 150, padding: 12, background: "var(--bg-1)", color: "var(--rose)", border: "1px solid var(--b)", borderRadius: "var(--r)" }}>{authError}</p>}
     </>
   );
 }

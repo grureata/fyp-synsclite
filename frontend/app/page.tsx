@@ -21,25 +21,25 @@ export default function Home() {
               <div className="u0" style={{ marginBottom: 24 }}>
                 <span className="badge bt">
                   <span className="dot pulse" style={{ background: "var(--teal)" }}/>
-                  Real-time AI Translation
+                  Prototype · Static-letter recognition
                 </span>
               </div>
 
               <h1 className="hero-title u1" style={{ marginBottom: 24 }}>
-                Sign language,<br/>
-                <span className="grad-text-anim">translated</span><br/>
-                in real time.
+                Communication<br/>
+                <span className="grad-text-anim">without barriers</span><br/>
+                starts with access.
               </h1>
 
               <p className="body u2" style={{ maxWidth: 460, marginBottom: 40, fontSize: 16, lineHeight: 1.8 }}>
-                Point your camera, start signing. SignSync uses AI to translate sign language
-                to speech — and speech to text — instantly, on any device.
+                SignSync Lite is an API-backed prototype for accounts, calibration, and session history,
+                with on-demand recognition of isolated static ASL fingerspelling.
               </p>
 
               <div className="u3 cta-btns" style={{ marginBottom: 52 }}>
                 <Link href="/translate" className="btn btn-v" style={{ padding: "14px 30px", fontSize: 15 }}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-                  Start Translating Free
+                  Open Translator
                 </Link>
                 <Link href="/about" className="btn btn-outline" style={{ padding: "14px 22px", fontSize: 15 }}>
                   How it works
@@ -48,10 +48,10 @@ export default function Home() {
 
               <div className="u4 stats-strip">
                 {[
-                  { v: "< 200ms", l: "Latency" },
-                  { v: "543",     l: "Landmarks" },
-                  { v: "2-Way",   l: "Communication" },
-                  { v: "Free",    l: "Always" },
+                  { v: "Local",      l: "Camera preview" },
+                  { v: "API-backed", l: "Accounts & sessions" },
+                  { v: "One frame",  l: "Sent on capture" },
+                  { v: "Static",     l: "Letters only" },
                 ].map(({ v, l }) => (
                   <div key={l} className="stat-item">
                     <div className="grad-text" style={{ fontSize: 22, fontWeight: 800, letterSpacing: "-1px", lineHeight: 1 }}>{v}</div>
@@ -98,18 +98,18 @@ export default function Home() {
                   <div style={{ position: "absolute", top: 10, left: 10, display: "flex", gap: 6 }}>
                     <span style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(16,14,34,0.85)", border: "1px solid rgba(26,172,171,0.28)", borderRadius: 100, padding: "3px 9px" }}>
                       <span className="dot pulse" style={{ background: "#22c55e", width: 6, height: 6 }}/>
-                      <span style={{ fontSize: 10, fontWeight: 700, color: "#22c55e", fontFamily: "'JetBrains Mono',monospace" }}>LIVE</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, color: "#22c55e", fontFamily: "'JetBrains Mono',monospace" }}>DEMO</span>
                     </span>
-                    <span style={{ background: "rgba(16,14,34,0.85)", border: "1px solid rgba(152,144,230,0.28)", borderRadius: 100, padding: "3px 9px", fontSize: 10, fontWeight: 700, color: "#b8b2f0", fontFamily: "'JetBrains Mono',monospace" }}>96% conf</span>
+                    <span style={{ background: "rgba(16,14,34,0.85)", border: "1px solid rgba(152,144,230,0.28)", borderRadius: 100, padding: "3px 9px", fontSize: 10, fontWeight: 700, color: "#b8b2f0", fontFamily: "'JetBrains Mono',monospace" }}>ILLUSTRATIVE</span>
                   </div>
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px 14px", background: "linear-gradient(transparent,rgba(10,8,24,0.97))" }}>
-                    <div style={{ fontSize: 9, color: "rgba(220,216,255,0.3)", fontFamily: "'JetBrains Mono',monospace", marginBottom: 3 }}>GLOSS DETECTED</div>
+                    <div style={{ fontSize: 9, color: "rgba(220,216,255,0.3)", fontFamily: "'JetBrains Mono',monospace", marginBottom: 3 }}>SAMPLE GLOSS · NOT RECOGNIZED</div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: "#dcd8ff", fontFamily: "'JetBrains Mono',monospace" }}>HELLO · HOW · YOU</div>
                   </div>
                 </div>
                 <div style={{ padding: "14px 16px", borderTop: "1px solid var(--b)", background: "var(--bg-1)" }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: "var(--teal)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "'JetBrains Mono',monospace", marginBottom: 6 }}>AI TRANSLATION</div>
-                  <div style={{ fontSize: 17, fontWeight: 700, color: "var(--t1)", lineHeight: 1.35 }}>"Hello, how are you?"</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: "var(--teal)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "'JetBrains Mono',monospace", marginBottom: 6 }}>ILLUSTRATIVE SAMPLE ONLY</div>
+                  <div style={{ fontSize: 17, fontWeight: 700, color: "var(--t1)", lineHeight: 1.35 }}>&quot;Hello, how are you?&quot;</div>
                 </div>
                 <div style={{ padding: "10px 14px", borderTop: "1px solid var(--b)", background: "var(--bg-1)" }}>
                   <Link href="/translate" className="btn btn-v" style={{ width: "100%", padding: "10px 0", fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
@@ -126,7 +126,7 @@ export default function Home() {
       <div style={{ borderTop: "1px solid var(--b)", borderBottom: "1px solid var(--b)", padding: "14px 0", overflow: "hidden", background: "var(--bg-2)" }}>
         <div style={{ display: "flex", gap: 40, whiteSpace: "nowrap", animation: "scroll 22s linear infinite", width: "max-content" }}>
           {[...Array(2)].map((_,r) =>
-            ["MediaPipe Holistic","DeepConvLSTM","LLM Grammar Engine","WebSocket Streaming","Sign → Speech","Speech → Text","Social · Medical · Legal","Privacy-First","No Hardware","< 200ms Latency","Two-Way Comms"].map((t,i) => (
+            ["API-backed accounts","PostgreSQL sessions","Local camera preview","Context presets","Calibration settings","CSV export","Static-letter inference"].map((t,i) => (
               <span key={`${r}-${i}`} style={{ fontSize: 12, color: "var(--t3)", fontFamily: "'JetBrains Mono',monospace" }}>
                 <span style={{ color: "var(--v)", marginRight: 14 }}>◆</span>{t}
               </span>
@@ -143,14 +143,14 @@ export default function Home() {
             <div className="hiw-sticky" style={{ position: "sticky", top: 88 }}>
               <p className="label" style={{ marginBottom: 14 }}>How It Works</p>
               <h2 className="section-title" style={{ marginBottom: 16 }}>Three steps.<br/>Zero friction.</h2>
-              <p className="body" style={{ marginBottom: 28 }}>No downloads, no gloves. Open your browser and start communicating immediately.</p>
+              <p className="body" style={{ marginBottom: 28 }}>Explore on-demand static-letter recognition, account-backed settings, and session history.</p>
               <Link href="/translate" className="btn btn-v">Start Now →</Link>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {[
-                { n: "01", c: "var(--v)",    cRaw: "127,119,221", title: "Open your camera",      body: "Grant camera access in your browser. Works on laptop, phone, or tablet — any device with a camera. No special hardware required." },
-                { n: "02", c: "var(--teal)", cRaw: "26,172,171",  title: "Sign naturally",         body: "Sign at your own pace. AI tracks 543 body landmarks across both hands, face, and posture at 30 FPS, with no markers needed." },
-                { n: "03", c: "var(--green)",cRaw: "26,150,80",   title: "Get fluent translation", body: "Gestures become correct English sentences. Hearing users speak back — you read their words. Full two-way conversation, no interpreter." },
+                { n: "01", c: "var(--v)",    cRaw: "127,119,221", title: "Sign in",               body: "Create an account to use the authenticated dashboard, calibration settings, and session endpoints." },
+                { n: "02", c: "var(--teal)", cRaw: "26,172,171",  title: "Capture one handshape",  body: "The browser sends one still frame only when you request recognition. The private inference service classifies a held static handshape." },
+                { n: "03", c: "var(--green)",cRaw: "26,150,80",   title: "Review saved data",      body: "Accepted letter predictions are saved to your session and appear in the dashboard. Uncertain results are not saved." },
               ].map(({ n, c, cRaw, title, body }) => (
                 <div key={n} className="card" style={{ padding: "22px 24px", display: "flex", gap: 18, alignItems: "flex-start" }}>
                   <div style={{ width: 42, height: 42, borderRadius: 12, background: `rgba(${cRaw},0.10)`, border: `1px solid rgba(${cRaw},0.22)`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
@@ -176,16 +176,16 @@ export default function Home() {
           <div style={{ marginBottom: 48 }}>
             <p className="label" style={{ marginBottom: 12 }}>Features</p>
             <h2 className="section-title" style={{ marginBottom: 12, maxWidth: 440 }}>Everything you need.<br/>Nothing extra.</h2>
-            <p className="body" style={{ maxWidth: 380 }}>Every feature built around real accessibility needs — no fluff.</p>
+            <p className="body" style={{ maxWidth: 380 }}>The workflows currently available in this prototype.</p>
           </div>
           <div className="features-grid">
             {[
-              { c: "var(--v)",    cR: "127,119,221", title: "Bidirectional",       body: "Sign to speech for hearing users. Speech to text for Deaf users. Full equal conversation in both directions." },
-              { c: "var(--teal)", cR: "26,172,171",  title: "Context modes",        body: "Social, Medical, and Legal presets tune the AI vocabulary to match your exact environment." },
-              { c: "var(--green)",cR: "26,150,80",   title: "No hardware needed",   body: "Any webcam or phone camera works. No sensor gloves, depth cameras, or expensive equipment." },
-              { c: "var(--amber)",cR: "201,122,10",  title: "Personal calibration", body: "60-second wizard learns your hand size, arm span, and pace. Better accuracy every session." },
-              { c: "var(--rose)", cR: "212,83,126",  title: "Privacy by design",    body: "Only skeletal landmark coordinates processed. Raw video never leaves your device." },
-              { c: "var(--v)",    cR: "127,119,221", title: "Session history",      body: "Every translation logged with confidence scores and timestamps. Export to CSV anytime." },
+              { c: "var(--v)",    cR: "127,119,221", title: "Account-backed sessions", body: "Sign-in uses an HttpOnly authentication cookie and private session endpoints." },
+              { c: "var(--teal)", cR: "26,172,171",  title: "Context presets",         body: "Social, Medical, and Legal presets are loaded from PostgreSQL." },
+              { c: "var(--green)",cR: "26,150,80",   title: "On-demand recognition",   body: "Only an explicitly captured still frame is sent for classification; video is not streamed." },
+              { c: "var(--amber)",cR: "201,122,10",  title: "Calibration profile",    body: "Enter and save calibration settings in your account; they are not automatically measured." },
+              { c: "var(--rose)", cR: "212,83,126",  title: "Limited static classifier", body: "Selected static letters only; words, phrases, and continuous signing are unsupported." },
+              { c: "var(--v)",    cR: "127,119,221", title: "Saved records",           body: "View and export translation records returned by the backend." },
             ].map(({ c, cR, title, body }) => (
               <div key={title} className="card" style={{ padding: "24px 20px", transition: "all 0.22s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = `0 12px 36px rgba(${cR},0.14)`; }}
@@ -207,27 +207,25 @@ export default function Home() {
         <div className="wrap-sm" style={{ position: "relative" }}>
           <div style={{ marginBottom: 44 }}>
             <p className="label" style={{ marginBottom: 12 }}>Why SignSync</p>
-            <h2 className="section-title" style={{ maxWidth: 360 }}>Built differently<br/>from the ground up.</h2>
+            <h2 className="section-title" style={{ maxWidth: 360 }}>Current project<br/>capabilities.</h2>
           </div>
           <div className="comparison-table-wrap" style={{ border: "1px solid var(--b2)", borderRadius: "var(--r3)", overflow: "hidden", boxShadow: "0 4px 24px rgba(26,23,48,0.08)" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 480 }}>
               <thead>
                 <tr style={{ background: "var(--bg-2)" }}>
-                  <th style={{ padding: "13px 20px", textAlign: "left",   fontSize: 10, fontWeight: 700, color: "var(--t3)", letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--b)", fontFamily: "'JetBrains Mono',monospace" }}>Capability</th>
-                  <th style={{ padding: "13px 20px", textAlign: "center", fontSize: 10, fontWeight: 700, color: "var(--t3)", letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--b)", fontFamily: "'JetBrains Mono',monospace" }}>Traditional</th>
-                  <th style={{ padding: "13px 20px", textAlign: "center", fontSize: 10, fontWeight: 700, color: "var(--v)",    letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--b)", fontFamily: "'JetBrains Mono',monospace", background: "rgba(127,119,221,0.06)" }}>SignSync ✦</th>
+                  <th style={{ padding: "13px 20px", textAlign: "left",   fontSize: 10, fontWeight: 700, color: "var(--t3)", letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--b)", fontFamily: "'JetBrains Mono',monospace" }}>Feature</th>
+                  <th style={{ padding: "13px 20px", textAlign: "center", fontSize: 10, fontWeight: 700, color: "var(--t3)", letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--b)", fontFamily: "'JetBrains Mono',monospace" }}>Status</th>
+                  <th style={{ padding: "13px 20px", textAlign: "center", fontSize: 10, fontWeight: 700, color: "var(--v)",    letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--b)", fontFamily: "'JetBrains Mono',monospace", background: "rgba(127,119,221,0.06)" }}>Details</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ["Hardware required",       "Gloves + depth camera",  "Standard webcam only"],
-                  ["Grammar quality",         "Word-by-word output",    "LLM sentence synthesis"],
-                  ["Communication direction", "One-way only",           "Full bidirectional"],
-                  ["Setup",                   "Complex and expensive",  "Open browser and go"],
-                  ["Context awareness",       "None",                   "Social · Medical · Legal"],
-                  ["Latency",                 "500ms to 2s+",           "Under 200ms"],
-                  ["Privacy",                 "Raw video streamed",     "Landmarks only"],
-                  ["Cost",                    "$50,000+ hardware",      "Free"],
+                  ["Account registration and login", "Available", "HttpOnly auth cookie"],
+                  ["Session and calibration APIs", "Available", "PostgreSQL-backed"],
+                  ["Contact form", "Available", "Submissions saved by the backend"],
+                  ["On-demand static-letter recognition", "Limited", "One captured frame; selected labels only"],
+                  ["Continuous signing or sentence translation", "Unavailable", "No phrase recognition or translation"],
+                  ["Speech recognition and synthesis", "Unavailable", "No speech service is configured"],
                 ].map(([feat, bad, good], i) => (
                   <tr key={feat} style={{ background: i%2===0 ? "var(--bg-1)" : "var(--bg-2)", borderBottom: "1px solid var(--b)" }}>
                     <td style={{ padding: "12px 20px", fontSize: 13, fontWeight: 500, color: "var(--t2)" }}>{feat}</td>
@@ -258,7 +256,7 @@ export default function Home() {
               <span className="grad-text">Start today.</span>
             </h2>
             <p className="body" style={{ maxWidth: 400, marginBottom: 36 }}>
-              Free. No account. No downloads. Open SignSync and start communicating in seconds.
+              Create an account to try the prototype. Recognition requires the locally configured inference service.
             </p>
             <div className="cta-btns">
               <Link href="/translate" className="btn btn-teal" style={{ padding: "14px 32px", fontSize: 15 }}>
@@ -280,7 +278,7 @@ export default function Home() {
             </div>
             <span style={{ fontWeight: 800, fontSize: 15, color: "var(--t1)", letterSpacing: "-0.5px" }}>Sign<span style={{ color: "var(--v)" }}>Sync</span></span>
           </div>
-          <p style={{ fontSize: 12, color: "var(--t4)" }}>© 2026 SignSync. Making communication accessible for everyone.</p>
+          <p style={{ fontSize: 12, color: "var(--t4)" }}>© 2026 SignSync Lite prototype.</p>
           <div style={{ display: "flex", gap: 22 }}>
             <Link href="/privacy" className="footer-link">Privacy</Link>
             <Link href="/terms"   className="footer-link">Terms</Link>
